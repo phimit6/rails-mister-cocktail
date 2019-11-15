@@ -1,10 +1,13 @@
 <h1><%= @cocktail.name %></h1>
 <p>Find me in app/views/cocktails/new.html.erb</p>
 
+<%= cl_image_tag @cocktail.photo.key, height: 300, width: 400, crop: :fill %>
 <%= simple_form_for [@cocktail] do |f| %>
   <%= f.input :name, :as => :text, input_html: { :style=> 'width: 300px;' }%>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "add", class: "btn btn-primary" %>
 <% end %>
+
 <br>
 
 <%= link_to "Back to Homepage", cocktails_path, class: "btn btn-primary"%>
