@@ -1,4 +1,12 @@
 <h1><%= @cocktail.name %></h1>
 <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1372&q=80" alt="cocktail" style="height:300px; border-radius: 5px" />
 
+  <% @cocktail.doses.each do |d| %>
+  <p> <%= d.description %> <%= d.ingredient.name %> </p>
+  <%= link_to "delete", dose_path(d), method: :delete%>
+  <% end %>
+  <br>
+  <br>
+
+<%= link_to "Add dose", new_cocktail_dose_path(@cocktail.id), class: "btn btn-primary"%>
 <%= link_to "Back to Homepage", cocktails_path, class: "btn btn-primary"%>
